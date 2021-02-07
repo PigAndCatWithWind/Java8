@@ -1,5 +1,7 @@
 package Lambda;
 
+import java.util.Objects;
+
 /**
  * @创建人 PigAndCatWithWind
  * @创建时间 2021/2/2上午11:22
@@ -52,5 +54,20 @@ public class Employee {
                 ", age=" + age +
                 ", salary=" + salary +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Employee)) return false;
+        Employee employee = (Employee) o;
+        return age == employee.age &&
+                Double.compare(employee.salary, salary) == 0 &&
+                Objects.equals(name, employee.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, age, salary);
     }
 }
