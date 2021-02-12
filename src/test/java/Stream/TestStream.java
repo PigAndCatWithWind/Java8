@@ -278,8 +278,7 @@ public class TestStream {
     @Test
     public void  test24(){
         Optional<Employee> optionalEmployee =
-                employees.stream()
-                .collect(Collectors.maxBy((e1,e2)->Double.compare(e1.getSalary(),e2.getSalary())));
+                employees.stream().max((e1, e2) -> Double.compare(e1.getSalary(), e2.getSalary()));
         System.out.println(optionalEmployee.get());
     }
 
@@ -287,8 +286,7 @@ public class TestStream {
     public void test25(){
         Optional<Double> optionalDouble =
                 employees.stream()
-                .map(Employee::getSalary)
-                .collect(Collectors.minBy(Double::compare));
+                        .map(Employee::getSalary).min(Double::compare);
         System.out.println(optionalDouble.get());
     }
 
@@ -341,7 +339,7 @@ public class TestStream {
     public void test30(){
         String s = employees.stream()
                 .map(Employee::getName)
-                .collect(Collectors.joining("--->"));
+                .collect(Collectors.joining(" ---> "));
         System.out.println(s);
     }
 }
